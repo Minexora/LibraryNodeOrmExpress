@@ -27,7 +27,8 @@ Uygulamanın üzerinden yapılabilecek işlemler aşağıda listelenmiştir:
 > Tüm projede urllerin topnaldığı yerdir.
 > ### **services**:
 > Proje için controller görevi görmektedir. Tüm fonksiyonlar burada yer almaktadır.
-
+> ### **validations**:
+> Gönderilen requestlerin içerisinde dataların doğru gelmesi için kontrole edilen kuralların olduğu yerdir.Projede express-validator kullanılarak validation işlemleri yapılmıştır.
 
 ## Database
 Database olarak postgresql kullanılmaktadır. Database run etmek için aşağıdaki komut yazılmalıdır.

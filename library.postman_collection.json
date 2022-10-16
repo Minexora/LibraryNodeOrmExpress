@@ -1,0 +1,196 @@
+{
+	"info": {
+		"_postman_id": "e39d12fd-f595-4905-85c6-ccd15c0c5e85",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "All Users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All Books",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/books",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Book For Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/books/c0f0eb38-b63a-403b-8ff5-b5885e3fb665",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"books",
+						"c0f0eb38-b63a-403b-8ff5-b5885e3fb665"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User For Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/users/7bf3ad52-6a66-498b-ae7b-48f6d723173a",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"7bf3ad52-6a66-498b-ae7b-48f6d723173a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"giray\",\r\n    \"email\": \"ab@b.com\",\r\n    \"pass\": \"1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Book",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Denemeler4\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/books",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Borrow Book",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/users/7bf3ad52-6a66-498b-ae7b-48f6d723173a/borrow/c0f0eb38-b63a-403b-8ff5-b5885e3fb665",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"7bf3ad52-6a66-498b-ae7b-48f6d723173a",
+						"borrow",
+						"c0f0eb38-b63a-403b-8ff5-b5885e3fb665"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Return Book",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"score\": 9\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/users/7bf3ad52-6a66-498b-ae7b-48f6d723173a/return/c0f0eb38-b63a-403b-8ff5-b5885e3fb665",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"7bf3ad52-6a66-498b-ae7b-48f6d723173a",
+						"return",
+						"c0f0eb38-b63a-403b-8ff5-b5885e3fb665"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
