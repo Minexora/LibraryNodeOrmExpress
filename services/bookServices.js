@@ -18,7 +18,7 @@ class BookService {
             res.send({ id: book.id, name: book.name, score: book.score });
         } catch (err) {
             log.error(err);
-            res.status(400).send(err.errors)
+            res.status(501).send(err.errors)
         }
     }
 
@@ -28,7 +28,7 @@ class BookService {
             res.send(books)
         } catch (err) {
             log.error(err);
-            res.status(400).send(err.errors)
+            res.status(501).send(err.errors)
         }
     }
 
@@ -39,7 +39,7 @@ class BookService {
             res.send(book)
         } catch (err) {
             log.error(err);
-            res.status(400).send(err.errors)
+            res.status(501).send(err.errors)
         }
     }
 }

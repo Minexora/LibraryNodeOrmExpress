@@ -23,7 +23,7 @@ class UserService {
             res.send({ id: user.id, name: user.name, books: user.books });
         } catch (err) {
             log.error(err);
-            res.status(400).send(err.errors)
+            res.status(501).send(err.errors)
         }
     }
 
@@ -37,7 +37,7 @@ class UserService {
             res.send(users)
         } catch (err) {
             log.error(err);
-            res.status(400).send(err.errors)
+            res.status(501).send(err.errors)
         }
     }
 
@@ -48,7 +48,7 @@ class UserService {
             res.send(user)
         } catch (err) {
             log.error(err);
-            res.status(400).send(err.errors)
+            res.status(501).send(err.errors)
         }
     }
 
@@ -60,13 +60,15 @@ class UserService {
             const book = await this.models.Book.findByPk(b_id)
             if (user && book) {
                 if (book.active) {
-                    let booksData = user.books
-                    booksData.present.push({
+                    user.books.present.push({
                         name: book.name
                     })
-                    user.books = booksData
-                    this.models.User.update({ books: booksData }, { where: { id: u_id } })
-                    this.models.Book.update({ active: false }, { where: { id: b_id } })
+                    user.changed("books", true) //--> json datanın değişmesi için izin verildi.
+                    await user.save()
+
+                    book.active = false
+                    book.changed("active", true)
+                    await book.save()
                     res.status(200).send(`The book named '${book.name}' was borrowed.`)
                 }
                 else {
@@ -78,7 +80,7 @@ class UserService {
             }
         } catch (err) {
             log.error(err);
-            res.status(400).send(err.errors)
+            res.status(501).send(err.errors)
         }
     }
 
@@ -90,18 +92,18 @@ class UserService {
             const book = await this.models.Book.findByPk(b_id)
             if (user && book) {
                 if (user.books.present.find(item => item.name === book.name)) {
-                    let booksData = user.books
-                    booksData.past.push({
+                    user.books.present = user.books.present.filter(item => item.name !== book.name)
+                    user.books.past.push({
                         name: book.name,
                         userScore: score
                     })
-                    booksData.present = booksData.present.filter(item => item.name !== book.name)
-                    user.books = booksData
-                    this.models.User.update({ books: booksData }, { where: { id: u_id } })
+                    user.changed("books", true); //--> json datanın değişmesi için izin verildi. 
+                    await user.save()
                     book.totalScore += score
                     book.receiptsCount++
                     book.score = book.totalScore / book.receiptsCount
-                    this.models.Book.update({ score: book.score, receiptsCount: book.receiptsCount, totalScore: book.totalScore, active: true }, { where: { id: b_id } })
+                    book.active = true
+                    await book.save()
                     res.status(200).send(`The book '${book.name}' is being returned.`)
                 } else {
                     res.status(400).send(`You don't have a book called '${book.name}'. You cannot return it!`)
@@ -112,7 +114,7 @@ class UserService {
             }
         } catch (err) {
             log.error(err);
-            res.status(400).send(err.errors)
+            res.status(501).send(err.errors)
         }
     }
 }
