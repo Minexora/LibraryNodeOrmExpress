@@ -1,0 +1,28 @@
+{
+  "name": "library_node",
+  "version": "1.0.0",
+  "description": "Kütüphane otomasyonu",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js -d true"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "bunyan": "^1.8.15",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "delay": "^5.0.0",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.2",
+    "lodash": "^4.17.21",
+    "minimist": "^1.2.6",
+    "pg": "^8.8.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.25.1",
+    "string-argv": "^0.3.1"
+  },
+  "author": "Giray AKKAYA (Minexora)",
+  "license": "ISC"
+}
