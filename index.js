@@ -1,7 +1,6 @@
 import _conf from "./config/index.js";
 import { app } from "./loaders/expressLoader.js"
 import { router as library_router } from "./router/libraryRouter.js"
-import delay from "delay";
 
 const conf = _conf();
 
