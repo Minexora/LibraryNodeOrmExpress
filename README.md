@@ -41,5 +41,5 @@ Database bağlantı bilgileri;
     Password: deneme12
     Volume: postgresql-data --> Bu docker da volume olarak verildiğinde birebir veriler görülebilir.
 
-**Not:** Database postgresql docker'da kaldırıldığında databaseler oluşmamadurumu olursa proje run edildiğinde otomatik olarak oluşturulmaktadır.
+**Not:** Database postgresql docker'da kaldırıldığında databaseler oluşmama (volume hatası) durumu olursa proje run edildiğinde otomatik olarak oluşturulmaktadır.
 **Bu yüzden DDL eklemedim.**
